@@ -39,12 +39,17 @@
                                     <td>{{ $row->jenis_kelamin }}</td>
                                     <td>{{ $row->tanggal_lahir }}</td>
                                     <td>
-                                        <a href="{{ route('siswa.edit', $row->id) }}" class="btn btn-warning">
-                                            Edit
-                                        </a>
-                                        <a href="{{ route('siswa.destroy', $row->id) }}" class="btn btn-danger">
-                                            Hapus
-                                        </a>
+                                        <div class="btn-group">
+
+                                            <a href="{{ route('siswa.edit', $row->id) }}" class="btn btn-warning">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('siswa.destroy', $row->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" tyoe="submit">Hapus</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
